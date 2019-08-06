@@ -1,10 +1,12 @@
 {
   "user1": {
     "username": "shoukatali",
+    "name":"Shoukat Ali",
     "password": "pass123"
   },
   "user2": {
     "username": "ali",
+    "name":"Ali Ahmed",
     "password": "pass321"
   }
 }

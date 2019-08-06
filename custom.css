@@ -1,0 +1,95 @@
+.containerMain{
+    width: 500px;
+    border-radius: 5px;
+    border:1px solid lightgray;
+    margin-top: 100px;
+    padding: 0;
+    margin: 0 auto;
+    font-family:sans-serif;
+}
+
+span.name{
+   font-family: sans-serif;
+   font-size: 15px;
+   font-weight: bold;
+}
+/* .chatLogs{
+   overflow-x: hidden;
+   overflow-y: scroll;
+   height: 400px;
+} */
+.chatLogs::-webkit-scrollbar{
+    width: 10px;
+}
+.chatLogs::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background: rgba(0, 0, 0, -1);
+}
+#chatBox{
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 400px;
+}
+.containerLogin{
+    width: 400px;
+    margin-top: 100px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 70px;
+    margin-left: 400px; 
+}
+.chat-form{
+    display: flex;
+    flex-flow: row;
+}
+
+.chat-form.send{
+        border-radius: 3px;
+        background-color: springgreen;
+}
+
+.chat{
+    margin: 20px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.self{
+    background: rgb(168, 20, 168);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+}
+.self span.time{
+    color: rgb(197, 201, 206);
+}
+.self span.name{
+    color: rgb(80, 9, 80);
+    font-size: 18px;
+    font-weight: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.friend{
+    background: green;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    order: -1;
+}
+.friend span.time{
+    color: rgb(155, 163, 173);
+}
+.friend span.name{
+    color: rgb(8, 71, 8);
+    font-size: 18px;
+    font-weight: 60px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+span.comment{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+}
+.chat-form textarea{
+    resize: none;
+}
+
+.chat-form{
+    height: 40px;
+}
