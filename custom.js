@@ -18,7 +18,7 @@ $(document).ready(function () {
                             if(arrayOfData[i+1]=="Me")
                             string += '<div class=" chat self"> <span class="name" >'+arrayOfData[i+1]+'</span><br>';
                             else
-                            string += '<div class=" chat friend"> <span class="name">'+arrayOfData[i+1]+'</span><br>';
+                            string += '<div class=" chat friend"> <span class="name">'+name+'</span><br>';
 
                             i++;
                           }
@@ -27,7 +27,7 @@ $(document).ready(function () {
                             if(arrayOfData[i+1]=="Me")
                              string += '</span> </div><div class="chat self"><span class="name" > '+arrayOfData[i+1]+'</span><br>';
                              else
-                             string += '</span> </div><div class="chat friend"><span class="name" > '+arrayOfData[i+1]+'</span><br>';
+                             string += '</span> </div><div class="chat friend"><span class="name" > '+name+'</span><br>';
 
                              i++;
                           }
@@ -112,6 +112,6 @@ $(document).ready(function () {
         chatBox.submit();
 
     });
-    $('#chatBox').animate({scrollTop: $('#chatBox').height()}, 1500);
+
 
 });

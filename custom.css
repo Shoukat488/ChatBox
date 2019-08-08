@@ -1,11 +1,19 @@
+
+.container-fluid{
+    background:rgb(6, 6, 53);
+}
+html{
+    margin: 0px;
+}
 .containerMain{
     width: 500px;
     border-radius: 5px;
     border:1px solid lightgray;
     margin-top: 100px;
-    padding: 0;
-    margin: 0 auto;
     font-family:sans-serif;
+    margin-left:400px;
+    margin-bottom: 90px;
+    padding: 10px;
 }
 
 span.name{
@@ -28,10 +36,12 @@ span.name{
 #chatBox{
     overflow-x: hidden;
     overflow-y: auto;
-    height: 400px;
+    height: 440px;
+    margin-bottom: 4px;
 }
 .containerLogin{
-    width: 400px;
+    width: 380px;
+    height: 340px;
     margin-top: 100px;
     border: 1px solid lightgray;
     border-radius: 5px;
@@ -42,19 +52,42 @@ span.name{
     display: flex;
     flex-flow: row;
 }
-
-.chat-form.send{
-        border-radius: 3px;
-        background-color: springgreen;
+#send img{
+    width: 26px;
+    height: 28px;
+    margin-left: 2px;
+}
+.chat-form #send{
+        
+        border: none;
+        border-radius: 50%;
+        background-color: rgb(6, 131, 68);
+        color: #ffffff;
+        margin-left: 5px;
+}
+.chat-form #comment{
+        padding: 9px;
+        width: 450px;
+        border-radius: 18px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.chat-form #send:hover{
+    background: rgb(3, 80, 42);;
+    transition: 1s;
+
+}
+.chat-form #send:focus{
+    outline: none;
+
+}
 .chat{
     margin: 20px;
     border-radius: 5px;
     padding: 10px;
 }
 .self{
-    background: rgb(168, 20, 168);
+    background: rgb(185, 181, 181,0.3);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #ffffff;
 }
@@ -62,13 +95,12 @@ span.name{
     color: rgb(197, 201, 206);
 }
 .self span.name{
-    color: rgb(80, 9, 80);
-    font-size: 18px;
-    font-weight: 60px;
+    font-size: 16px;
+    font-weight: 40px;
     font-family: Arial, Helvetica, sans-serif;
 }
 .friend{
-    background: green;
+    background: rgba(7, 108, 155, 0.288);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #ffffff;
     order: -1;
@@ -77,14 +109,14 @@ span.name{
     color: rgb(155, 163, 173);
 }
 .friend span.name{
-    color: rgb(8, 71, 8);
-    font-size: 18px;
-    font-weight: 60px;
+    font-size: 16px;
+    font-weight: 40px;
     font-family: Arial, Helvetica, sans-serif;
 }
 span.comment{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 16px;
+    color: rgb(230, 223, 223);
 }
 .chat-form textarea{
     resize: none;
@@ -92,4 +124,8 @@ span.comment{
 
 .chat-form{
     height: 40px;
+}
+.sign{
+    margin-left: 40px;
+    margin-top: 30px;
 }
