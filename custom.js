@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
 
-
     var chatBox={
 
         loadMyData: function(){

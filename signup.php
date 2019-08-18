@@ -34,7 +34,7 @@
 	<p class="divider-text">
         <span class="bg-light">OR</span>
     </p>
-	<form method="POST">
+	<form action="signUpFun.php" method="POST">
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -63,13 +63,12 @@
     <div class="form-group">
         <button type="submit" name="signup" class="btn btn-primary btn-block"> Create Account  </button>
     </div> <!-- form-group// -->      
-    <p class="text-center">Have an account? <a href="login1.php" name="login">Log In</a> </p> 
+    <p class="text-center">Have an account? <a href="login1.php"  name="login">Log In</a> </p> 
     <?php
-    
     if(isset($_SESSION['pass']))
     {   
-        if($_SESSION['pass']=='true')
-        echo '<p> Hello world </p>';
+        if($_SESSION['pass']=='false')
+        echo '<span class ="text-center" style= "color:crimson"> Password does not match  </span>';
     }
     ?>
 </form>
