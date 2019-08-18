@@ -18,7 +18,7 @@ $(document).ready(function () {
                             if(arrayOfData[i+1]=="Me")
                             string += '<div class=" chat self"> <span class="name" >'+arrayOfData[i+1]+'</span><br>';
                             else
-                            string += '<div class=" chat friend"> <span class="name">'+name+'</span><br>';
+                            string += '<div class=" chat friend"> <span class="name">'+arrayOfData[i+1]+'</span><br>';
 
                             i++;
                           }
@@ -27,7 +27,7 @@ $(document).ready(function () {
                             if(arrayOfData[i+1]=="Me")
                              string += '</span> </div><div class="chat self"><span class="name" > '+arrayOfData[i+1]+'</span><br>';
                              else
-                             string += '</span> </div><div class="chat friend"><span class="name" > '+name+'</span><br>';
+                             string += '</span> </div><div class="chat friend"><span class="name" > '+arrayOfData[i+1]+'</span><br>';
 
                              i++;
                           }
@@ -52,12 +52,26 @@ $(document).ready(function () {
                           }
 
                       }
-
+                      
+                      
+                      $.ajax({
+                        type:'GET',
+                        url:username +'live.txt',
+                        success: function(data){
+                            console.log(data);
+                            if(data =="false")
+                            {
+                                console.log(data);
+                                string += '<div style="color:white;">'+name+' is typing...... </div>';
+                            }
+                        }
+                      });
                       $('#chatBox').html(string);
+                    //   $('#chatBox').scrollTop($('#chatBox').height());
                       chatBox.loadMyData();
                 }
 
-            })
+            });
 
         },
         postDataThroughPhp: function(dataForMe,dataForYou)
@@ -99,13 +113,38 @@ $(document).ready(function () {
 
                 let time = chatBox.getTime();
                 var dataForMe = '\n name: Me \n time: '+time+' \n comment: '+comment+'';
-                var dataForYou = '\n name: '+username+' \n time: '+time+' \n comment: '+comment+'';
+                var dataForYou = '\n name: '+name+' \n time: '+time+' \n comment: '+comment+'';
                 chatBox.postDataThroughPhp(dataForMe,dataForYou);
 
                 $('#comment').val('');
         }
     };
+    $('#comment').focus(function(){
 
+        $('#comment').blur(function(){
+        
+            $.ajax({
+                type:'POST',
+                url: 'updateLiveStatus.php',
+                data:{status:'false'},
+                success:function(){
+                    
+                }
+            })
+    
+        });
+        
+        // if($('#comment').val()!="")
+            $.ajax({
+                type:'POST',
+                url: 'updateLiveStatus.php',
+                data:{status:'true'},
+                success:function(){
+                    
+                }
+            })
+    });
+  
     chatBox.loadMyData();
     console.log(username);
     $('#send').click(function(){
@@ -113,5 +152,6 @@ $(document).ready(function () {
 
     });
 
+  
 
-});
+});;

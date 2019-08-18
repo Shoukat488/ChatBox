@@ -22,7 +22,7 @@
           Username <input type="text" class="form-control" name="username" id="username">
           Password <input type="password" class="form-control" name="password" id="password">
            <button type="submit" class="btn btn-primary" name ="submit" id="login" style="margin-top: 10px">Login</button>
-           <span class="sign"><a name="goForSignUp" href="">sign up</a></span> 
+           <button class="sign btn btn-link" name="goForSignUp" >sign up</button> 
             </form>
             <?php
             if(isset($_SESSION['status']))

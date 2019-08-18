@@ -20,6 +20,7 @@
 <div class="containerMain">
         <div class="chatLogs" id="chatBox">
         </div>
+          
         <div class="chat-form">
         <textarea  id="comment" class="form-control" rows="1" placeholder="Write something......."></textarea>
         <button type="button" class="send" id="send"><img src="./send-button.png"></button>
