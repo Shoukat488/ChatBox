@@ -54,14 +54,13 @@ $(document).ready(function () {
                       
                       
                       $.ajax({
-                          
+
                         type:'GET',
                         url:username +'live.txt',
                         success: function(data){
-                            // console.log(data);
+                            
                             if(data ==="true")
                             {
-                                // console.log(typeof data);
                                 $('#liveStatus').html('Someone is typing......');
                             }
                             else
@@ -124,16 +123,16 @@ $(document).ready(function () {
                 $('#comment').val('');
         }
     };
+
+
     $('#comment').keydown(function(Key){
-           console.log(Key);
-        // alert();
-        // $('#comment').blur(function(){
+        
             if($('#comment').val()==""|| (Key.keyCode==8 && $('#comment').val().length==1))    
             {
                 makeStatusFalse();            
             }
     
-        // });
+        
         if(Key.keyCode>=32 && Key.keyCode <=126 || Key.keyCode==13) 
         {
             $.ajax({
@@ -146,6 +145,8 @@ $(document).ready(function () {
             })
         }
     });
+
+
     function  makeStatusFalse(){
         $.ajax({
             type:'POST',
