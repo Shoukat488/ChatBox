@@ -59,7 +59,7 @@ $(document).ready(function () {
                         url:username +'live.txt',
                         success: function(data){
                             
-                            if(data ==="true")
+                            if(data ==="true" ||data ==="1")
                             {
                                 $('#liveStatus').html('Someone is typing......');
                             }
