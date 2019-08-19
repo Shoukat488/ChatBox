@@ -20,8 +20,8 @@
 <div class="containerMain">
         <div class="chatLogs" id="chatBox">
         </div>
-          
-        <div class="chat-form">
+          <span id = "liveStatus" style="color:white; margin-left: 20px;"></span>
+        <div class="chat-form" style="margin-top: 5px; color: bisque;">
         <textarea  id="comment" class="form-control" rows="1" placeholder="Write something......."></textarea>
         <button type="button" class="send" id="send"><img src="./send-button.png"></button>
         </div>

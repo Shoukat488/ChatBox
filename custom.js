@@ -54,17 +54,23 @@ $(document).ready(function () {
                       
                       
                       $.ajax({
+                          
                         type:'GET',
                         url:username +'live.txt',
                         success: function(data){
-                            console.log(data);
-                            if(data =="false")
+                            // console.log(data);
+                            if(data ==="true")
                             {
-                                console.log(data);
-                                string += '<div style="color:white;">'+name+' is typing...... </div>';
+                                // console.log(typeof data);
+                                $('#liveStatus').html('Someone is typing......');
+                            }
+                            else
+                            {
+                                $('#liveStatus').html("");
                             }
                         }
                       });
+                      
                       $('#chatBox').html(string);
                     //   $('#chatBox').scrollTop($('#chatBox').height());
                       chatBox.loadMyData();
@@ -118,22 +124,18 @@ $(document).ready(function () {
                 $('#comment').val('');
         }
     };
-    $('#comment').focus(function(){
-
-        $('#comment').blur(function(){
-        
-            $.ajax({
-                type:'POST',
-                url: 'updateLiveStatus.php',
-                data:{status:'false'},
-                success:function(){
-                    
-                }
-            })
+    $('#comment').keydown(function(Key){
+           console.log(Key);
+        // alert();
+        // $('#comment').blur(function(){
+            if($('#comment').val()==""|| (Key.keyCode==8 && $('#comment').val().length==1))    
+            {
+                makeStatusFalse();            
+            }
     
-        });
-        
-        // if($('#comment').val()!="")
+        // });
+        if(Key.keyCode>=32 && Key.keyCode <=126 || Key.keyCode==13) 
+        {
             $.ajax({
                 type:'POST',
                 url: 'updateLiveStatus.php',
@@ -142,15 +144,27 @@ $(document).ready(function () {
                     
                 }
             })
+        }
     });
+    function  makeStatusFalse(){
+        $.ajax({
+            type:'POST',
+            url: 'updateLiveStatus.php',
+            data:{status:'false'},
+            success:function(){
+            }
+        })
+    }
   
     chatBox.loadMyData();
     console.log(username);
     $('#send').click(function(){
         chatBox.submit();
-
+        makeStatusFalse();
     });
 
+    $('#comment').focus();
+    makeStatusFalse();
   
 
 });;
