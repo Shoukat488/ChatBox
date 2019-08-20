@@ -6,51 +6,72 @@ $(document).ready(function () {
         loadMyData: function(){
             $.ajax({
                 type:'GET',
-                url: username+'.txt',
+                url: username+'.json',
                 success:function(data){
-                        var arrayOfData = data.split(' ');
-                        var string = '';
-                      for(let i = 0; i< arrayOfData.length; i++)
-                      {
-                          if(i==0 && arrayOfData[i]=="name:")
-                          {
-                            if(arrayOfData[i+1]=="Me")
-                            string += '<div class=" chat self"> <span class="name" >'+arrayOfData[i+1]+'</span><br>';
-                            else
-                            string += '<div class=" chat friend"> <span class="name">'+arrayOfData[i+1]+'</span><br>';
 
-                            i++;
-                          }
-                          else if(arrayOfData[i]=="name:")
-                          {
-                            if(arrayOfData[i+1]=="Me")
-                             string += '</span> </div><div class="chat self"><span class="name" > '+arrayOfData[i+1]+'</span><br>';
-                             else
-                             string += '</span> </div><div class="chat friend"><span class="name" > '+arrayOfData[i+1]+'</span><br>';
+                    // console.log(typeof data);
+                    string = "";
 
-                             i++;
-                          }
-                          else if(arrayOfData[i]=='time:'){
+                    for(key in data)
+                    {
+                        for(let i = 0 ; i < data[key].length; i++)
+                        {
+                            if(data[key][i].name=="you")
+                                string += '<div class=" chat self"> <span class="name" >You</span><br>';
+                            else 
+                                string += '<div class=" chat friend"> <span class="name" >'+data[key][i].name+'</span><br>';
+                            
+                            string += '<span class="time "> '+data[key][i].time+'</span>';
+                            string += '<br><span class="comment">'+data[key][i].comment+' </span> </div>';
 
-                              string += '<span class="time ">'
-                              for(let j =1 ; j<= 3; j++)
-                              {
-                              string += arrayOfData[i+j] + ' ';
-                              }
-                              string += '</span>'
-                              i += 3;
-                          }
-                          else if(arrayOfData[i]=='comment:')
-                          {
+                        }
+                        
+                    }
+                
+                    // });
+                    //     var arrayOfData = data.split(' ');
+                    //     var string = '';
+                    //   for(let i = 0; i< arrayOfData.length; i++)
+                    //   {
+                    //       if(i==0 && arrayOfData[i]=="name:")
+                    //       {
+                    //         if(arrayOfData[i+1]=="Me")
+                    //         string += '<div class=" chat self"> <span class="name" >'+arrayOfData[i+1]+'</span><br>';
+                    //         else
+                    //         string += '<div class=" chat friend"> <span class="name">'+arrayOfData[i+1]+'</span><br>';
 
-                              string += '<br><span class="comment">'
-                          }
-                          else
-                          {
-                              string += arrayOfData[i] + ' ';
-                          }
+                    //         i++;
+                    //       }
+                    //       else if(arrayOfData[i]=="name:")
+                    //       {
+                    //         if(arrayOfData[i+1]=="Me")
+                    //          string += '</span> </div><div class="chat self"><span class="name" > '+arrayOfData[i+1]+'</span><br>';
+                    //          else
+                    //          string += '</span> </div><div class="chat friend"><span class="name" > '+arrayOfData[i+1]+'</span><br>';
 
-                      }
+                    //          i++;
+                    //       }
+                    //       else if(arrayOfData[i]=='time:'){
+
+                    //           string += '<span class="time ">'
+                    //           for(let j =1 ; j<= 3; j++)
+                    //           {
+                    //           string += arrayOfData[i+j] + ' ';
+                    //           }
+                    //           string += '</span>'
+                    //           i += 3;
+                    //       }
+                    //       else if(arrayOfData[i]=='comment:')
+                    //       {
+
+                    //           string += '<br><span class="comment">'
+                    //       }
+                    //       else
+                    //       {
+                    //           string += arrayOfData[i] + ' ';
+                    //       }
+
+                    //   }
                       
                       
                       $.ajax({
@@ -72,22 +93,11 @@ $(document).ready(function () {
                       
                       $('#chatBox').html(string);
                     //   $('#chatBox').scrollTop($('#chatBox').height());
-                      chatBox.loadMyData();
+                    //   chatBox.loadMyData();
                 }
 
             });
 
-        },
-        postDataThroughPhp: function(dataForMe,dataForYou)
-        {
-            $.ajax({
-                type: 'POST',
-                url: 'loadMyData.php',
-                data: {dataForMe:dataForMe, dataForYou:dataForYou},
-                success:function()
-                {
-                }
-            })
         },
         getTime: function() {
             let DateAndTime = new Date();
@@ -109,15 +119,25 @@ $(document).ready(function () {
 
             return(time+":"+mint + " "+type +" "+day+"-"+month+"-"+year);
         },
-
+        postDataThroughPhp: function(dataForMe,dataForYou)
+        {
+            $.ajax({
+                type: 'POST',
+                url: 'loadMyData.php',
+                data: {dataForMe:dataForMe, dataForYou:dataForYou},
+                success:function()
+                {
+                }
+            })
+        },
         submit: function()
         {
 
                 let comment = $('#comment').val();
 
                 let time = chatBox.getTime();
-                var dataForMe = '\n name: Me \n time: '+time+' \n comment: '+comment+'';
-                var dataForYou = '\n name: '+name+' \n time: '+time+' \n comment: '+comment+'';
+                var dataForMe = '{ "name": "You" , "time": "'+time+'", "comment": "'+comment+'",';
+                var dataForYou = '{ "name": "'+name+'" , "time": "'+time+'", "comment": "'+comment+'",';
                 chatBox.postDataThroughPhp(dataForMe,dataForYou);
 
                 $('#comment').val('');

@@ -7,19 +7,22 @@
         echo $dataForMe;
         echo $dataForYou;
         echo $user;
-        $ali = fopen('ali.txt','a');
-        $shoukat = fopen('shoukatali.txt','a');
+        $userFile = fopen($user.".json",'a');
+        $ali = fopen('ali.json','a');
+        
+        $string =  fread($userFile,filesize($user.".json"));
 
-        if($user == 'shoukatali')
-        {
-            fputs($shoukat,$dataForMe);
-            fputs($ali,$dataForYou);
-        }
-        else{
-            fputs($ali,$dataForMe);
-            fputs($shoukat,$dataForYou);
-        }
+        echo $string;
+        // if($user == 'shoukatali')
+        // {
+        //     fputs($shoukat,$dataForMe);
+        //     fputs($ali,$dataForYou);
+        // }
+        // else{
+        //     fputs($ali,$dataForMe);
+        //     fputs($shoukat,$dataForYou);
+        // }
 
-        fclose($ali);
-        fclose($shoukat);
+        // fclose($ali);
+        // fclose($shoukat);
 ?>
