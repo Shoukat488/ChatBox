@@ -1,12 +1,12 @@
 {
     "ali":[
         {
-        "name":"you",
-        "time":"12:17 am 19-7-2019",
-        "comment": "How are you?"
+            "name":"you",
+            "time":"12:17 am 19-7-2019",
+            "comment": "How are you?"
         },
         {
-            "name":"ali",
+            "name":"Ali",
             "time":"12:17 am 19-7-2019",
             "comment": "fine"
         }
