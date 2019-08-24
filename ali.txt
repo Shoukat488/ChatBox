@@ -85,6 +85,7 @@
  comment: Nhi
  name: Me 
  time: 2:37 am 19-7-2019 
+<<<<<<< HEAD
  comment: Oh
  name: Me 
  time: 8:28 am 19-7-2019 
@@ -95,3 +96,6 @@
  name: Shoukat Ali 
  time: 10:41 am 19-7-2019 
  comment: hoo!
+=======
+ comment: Oh{ "name": "Shoukat Ali" , "time": "10:51 pm 20-7-2019", "comment": "Hi ",
+>>>>>>> multiUser
